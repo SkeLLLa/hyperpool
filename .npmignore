@@ -1,0 +1,5 @@
+.*
+jest.config.ts
+**/__tests__/**
+tsconfig.*
+pnpm-lock.yaml
