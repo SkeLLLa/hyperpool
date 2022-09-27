@@ -2,8 +2,10 @@ import type { Config } from '@jest/types';
 import { defaults as tsjPreset } from 'ts-jest/presets';
 
 const config: Config.InitialOptions = {
+  collectCoverage: true,
+  collectCoverageFrom: ['src/**/*.(ts|js)'],
+  coverageReporters: ['lcov', 'text', 'json', 'html'],
   verbose: true,
-  collectCoverageFrom: ['src/**/*.ts'],
   maxWorkers: 4,
   coverageProvider: 'v8',
   displayName: {
