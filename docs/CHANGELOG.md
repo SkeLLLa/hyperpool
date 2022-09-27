@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/SkeLLLa/hyperpool/compare/v1.0.0...v1.0.1) (2022-09-27)
+
+
+### ✂️ Refactor
+
+* add npmignore ([3370d73](https://github.com/SkeLLLa/hyperpool/commit/3370d738e167d8791c03f153137f3021bd6647ff))
+
 ## 1.0.0 (2022-09-27)
 
 
