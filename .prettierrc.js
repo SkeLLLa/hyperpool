@@ -1,0 +1,17 @@
+module.exports = {
+  $schema: 'http://json.schemastore.org/prettierrc',
+  trailingComma: 'all',
+  useTabs: false,
+  tabWidth: 2,
+  semi: true,
+  singleQuote: true,
+  quoteProps: 'consistent',
+  arrowParens: 'always',
+  bracketSpacing: true,
+  endOfLine: 'lf',
+  printWidth: 120,
+  plugins: [require.resolve('prettier-plugin-packagejson'), require.resolve('@trivago/prettier-plugin-sort-imports')],
+  importOrder: ['<THIRD_PARTY_MODULES>', '^\\.\\..*$', '^\\..*$'],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+};

@@ -1,0 +1,9 @@
+logs/
+coverage/
+node_modules/
+.idea/
+.vscode/
+**/*.xxx.*
+dist/
+jest.config.*
+.eslintrc.js
