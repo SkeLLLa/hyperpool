@@ -1,6 +1,5 @@
-import type { IPoolItemWithLoad } from '../types';
+import type { IPoolItemWithStats } from '../types';
 
-import type { TContinuation } from './AbstractPool';
 import { RoundRobin } from './RoundRobin';
 
 interface IMinLoad {
@@ -8,20 +7,17 @@ interface IMinLoad {
   prev: number;
 }
 
-export class BalancedRoundRobin<TKey, TValue extends IPoolItemWithLoad> extends RoundRobin<TKey, TValue> {
+export class BalancedRoundRobin<TKey, TValue extends IPoolItemWithStats> extends RoundRobin<TKey, TValue> {
   protected minLoad: IMinLoad;
 
   constructor(override readonly agents: Map<TKey, TValue>) {
     super(agents);
+
     this.minLoad = {
       curr: Number.POSITIVE_INFINITY,
       prev: Number.POSITIVE_INFINITY,
     };
     this.iterator = this.agents.values();
-  }
-
-  get load(): number {
-    return Array.from(this.agents.values()).reduce((sum, val) => (sum += val.load), 0);
   }
 
   override getNextItem(): TValue {
@@ -45,16 +41,5 @@ export class BalancedRoundRobin<TKey, TValue extends IPoolItemWithLoad> extends 
 
   *[Symbol.iterator](): Generator<TValue> {
     yield this.getNextItem();
-  }
-
-  public override async execAsync<TResult = unknown>(continuation: TContinuation<TResult>): Promise<TResult> {
-    this.poolStats.running++;
-    try {
-      const instance = this.getNextItem();
-      const result = await continuation(instance);
-      return result;
-    } finally {
-      this.poolStats.running--;
-    }
   }
 }

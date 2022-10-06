@@ -32,6 +32,7 @@ specifiers:
   jest: ^29.0.3
   jest-junit: ^14.0.1
   jest-mock: ^29.0.3
+  p-defer: ^3.0.0
   pino-pretty: ^9.1.0
   prettier: ^2.7.1
   prettier-plugin-packagejson: ^2.2.18
@@ -73,6 +74,7 @@ devDependencies:
   jest: 29.0.3_94145211fc290705c81493b9c208b1bf
   jest-junit: 14.0.1
   jest-mock: 29.0.3
+  p-defer: 3.0.0
   pino-pretty: 9.1.0
   prettier: 2.7.1
   prettier-plugin-packagejson: 2.2.18_prettier@2.7.1
@@ -4612,6 +4614,11 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
       word-wrap: 1.2.3
+    dev: true
+
+  /p-defer/3.0.0:
+    resolution: {integrity: sha512-ugZxsxmtTln604yeYd29EGrNhazN2lywetzpKhfmQjW/VJmhpDmWbiX+h0zL8V91R0UXkhb3KtPmyq9PZw3aYw==}
+    engines: {node: '>=8'}
     dev: true
 
   /p-each-series/2.2.0:
