@@ -1,6 +1,5 @@
-import type { IPoolItemWithLoad } from '../types';
+import type { IPoolItemWithStats } from '../types';
 
-import type { TContinuation } from './AbstractPool';
 import { BalancedRoundRobin } from './BalancedRoundRobin';
 
 export interface IConfig {
@@ -8,9 +7,10 @@ export interface IConfig {
   concurrencyMin?: number;
   concurrencyPenalty?: number;
   concurrencyReward?: number;
+  targetRunTime?: number;
 }
 
-export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithLoad> extends BalancedRoundRobin<
+export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithStats> extends BalancedRoundRobin<
   TKey,
   TValue
 > {
@@ -23,8 +23,10 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithLoad> 
       concurrencyMin: options.concurrencyMin ?? 1,
       concurrencyPenalty: options.concurrencyPenalty ?? 1,
       concurrencyReward: options.concurrencyReward ?? 1,
+      targetRunTime: options.targetRunTime ?? Number.POSITIVE_INFINITY,
     };
     this.currentMaxCurrency = this.config.concurrencyMax;
+    this.stats.free = this.currentMaxCurrency;
     this.minLoad = {
       curr: Number.POSITIVE_INFINITY,
       prev: Number.POSITIVE_INFINITY,
@@ -32,34 +34,36 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithLoad> 
     this.iterator = this.agents.values();
   }
 
-  override get load(): number {
-    return this.poolStats.running;
+  override get load() {
+    return this.stats.running / this.stats.free;
   }
 
-  private reward(): void {
+  public reward(): void {
     this.currentMaxCurrency += this.config.concurrencyReward;
     if (this.currentMaxCurrency > this.config.concurrencyMax) {
       this.currentMaxCurrency = this.config.concurrencyMax;
     }
   }
 
-  private penalize(): void {
+  public penalize(): void {
     this.currentMaxCurrency -= this.config.concurrencyPenalty;
     if (this.currentMaxCurrency < this.config.concurrencyMin) {
       this.currentMaxCurrency = this.config.concurrencyMin;
     }
   }
 
-  public override async execAsync<TResult = unknown>(continuation: TContinuation<TResult>): Promise<TResult> {
+  public override async execAsync<F extends (instance: TValue) => unknown>(continuation: F): Promise<ReturnType<F>> {
     if (this.poolStats.running >= this.currentMaxCurrency) {
       throw Error('Max concurency value reached');
     }
+    const start = new Date();
     this.poolStats.running++;
     try {
       const instance = this.getNextItem();
       const result = await continuation(instance);
-      this.reward();
-      return result;
+      const end = new Date();
+      end.getTime() - start.getTime() > this.config.targetRunTime ? this.penalize() : this.reward();
+      return result as ReturnType<F>;
     } catch (err) {
       this.penalize();
       throw err;
