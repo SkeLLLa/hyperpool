@@ -2,7 +2,7 @@ import { describe, expect, test } from '@jest/globals';
 
 describe('Hyperpool', () => {
   describe('Hierarchical', () => {
-    test('Balanced over simple RR', () => {
+    test('TODO', () => {
       expect(true).toBe(true);
     });
   });
