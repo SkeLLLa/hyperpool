@@ -1,3 +1,15 @@
+## [1.1.0](https://github.com/SkeLLLa/hyperpool/compare/v1.0.1...v1.1.0) (2022-10-07)
+
+
+### 🧾 Other
+
+* add todo ([26165f3](https://github.com/SkeLLLa/hyperpool/commit/26165f3d63b1d4f759de11294171299e1596f41a))
+
+
+### 🚀 Features
+
+* **pools:** add advanced stats and loadbalancing ([c5cc80f](https://github.com/SkeLLLa/hyperpool/commit/c5cc80f537b28bd4470bb41e85e0dee04e3a2bf9))
+
 ## [1.0.1](https://github.com/SkeLLLa/hyperpool/compare/v1.0.0...v1.0.1) (2022-09-27)
 
 
