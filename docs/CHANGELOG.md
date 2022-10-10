@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/SkeLLLa/hyperpool/compare/v1.1.0...v1.2.0) (2022-10-10)
+
+
+### 🚀 Features
+
+* **pools:** add cold reserve pool with swithc ([e09d13a](https://github.com/SkeLLLa/hyperpool/commit/e09d13ab071f0b6da691006b505a431a4def1e5e))
+
 ## [1.1.0](https://github.com/SkeLLLa/hyperpool/compare/v1.0.1...v1.1.0) (2022-10-07)
 
 
