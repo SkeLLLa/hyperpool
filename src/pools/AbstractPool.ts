@@ -41,6 +41,10 @@ export abstract class AbstractPool<TKey, TValue extends IPoolItem> {
 
   public abstract [Symbol.iterator](): Generator<TValue>;
 
+  public getItemByKey(key: TKey): TValue | undefined {
+    return this.agents.get(key);
+  }
+
   public enqueue<F extends TContinuationFn<TValue>>(continuation: F): void {
     this.poolStats.queued++;
     this.queue.push(continuation);
