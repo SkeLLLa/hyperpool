@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/SkeLLLa/hyperpool/compare/v1.2.1...v1.3.0) (2022-10-19)
+
+
+### 🚀 Features
+
+* add errors and codes ([e25283b](https://github.com/SkeLLLa/hyperpool/commit/e25283b024de84f91f15d7ec4e37918680e6f398))
+
 ## [1.2.1](https://github.com/SkeLLLa/hyperpool/compare/v1.2.0...v1.2.1) (2022-10-19)
 
 
