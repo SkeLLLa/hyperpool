@@ -43,6 +43,7 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithStats>
     if (this.currentMaxCurrency > this.config.concurrencyMax) {
       this.currentMaxCurrency = this.config.concurrencyMax;
     }
+    this.stats.free = this.currentMaxCurrency;
   }
 
   public penalize(): void {
@@ -50,6 +51,7 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithStats>
     if (this.currentMaxCurrency < this.config.concurrencyMin) {
       this.currentMaxCurrency = this.config.concurrencyMin;
     }
+    this.stats.free = this.currentMaxCurrency;
   }
 
   public override async execAsync<F extends (instance: TValue) => unknown>(continuation: F): Promise<ReturnType<F>> {
