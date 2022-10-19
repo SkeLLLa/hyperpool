@@ -1,3 +1,16 @@
+## [1.2.1](https://github.com/SkeLLLa/hyperpool/compare/v1.2.0...v1.2.1) (2022-10-19)
+
+
+### 🧾 Other
+
+* **deps:** fix deps ([faf2523](https://github.com/SkeLLLa/hyperpool/commit/faf2523ed671c78fe226e04aa2865c61350e6e40))
+* **deps:** update ([7480ee1](https://github.com/SkeLLLa/hyperpool/commit/7480ee16c0976322a40cae30a006c525b272941f))
+
+
+### 🛠 Fixes
+
+* **pools:** fix pool stats ([4353a4a](https://github.com/SkeLLLa/hyperpool/commit/4353a4ab54aba17d12afe9a0258d494da1610a88))
+
 ## [1.2.0](https://github.com/SkeLLLa/hyperpool/compare/v1.1.0...v1.2.0) (2022-10-10)
 
 
