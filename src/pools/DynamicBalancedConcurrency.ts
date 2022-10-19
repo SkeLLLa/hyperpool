@@ -1,3 +1,4 @@
+import { EHyperpoolErrorCodes, HyperpoolError } from '../errors';
 import type { IPoolItemWithStats } from '../types';
 
 import { BalancedRoundRobin } from './BalancedRoundRobin';
@@ -56,7 +57,10 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithStats>
 
   public override async execAsync<F extends (instance: TValue) => unknown>(continuation: F): Promise<ReturnType<F>> {
     if (this.poolStats.running >= this.currentMaxCurrency) {
-      throw Error('Max concurency value reached');
+      throw new HyperpoolError({
+        code: EHyperpoolErrorCodes.NoAgentsAvailable,
+        message: 'Max concurency value reached',
+      });
     }
     const start = new Date();
     this.poolStats.running++;

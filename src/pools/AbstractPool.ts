@@ -1,3 +1,4 @@
+import { EHyperpoolErrorCodes, HyperpoolError } from '../errors';
 import type { IPoolItem } from '../types';
 
 export interface IStats {
@@ -15,7 +16,10 @@ export type TContinuationFn<TInstance> = (instance: TInstance) => unknown;
 export abstract class AbstractPool<TKey, TValue extends IPoolItem> {
   constructor(protected readonly agents: Map<TKey, TValue>) {
     if (this.agents.size === 0) {
-      throw Error('Number of items in pool should be > 0');
+      throw new HyperpoolError({
+        code: EHyperpoolErrorCodes.InvalidConfiguration,
+        message: 'Number of items in pool should be > 0',
+      });
     }
     this.stats.size = this.agents.size;
   }
