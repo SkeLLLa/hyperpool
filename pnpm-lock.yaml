@@ -32,7 +32,7 @@ specifiers:
   jest: ^29.2.1
   jest-junit: ^14.0.1
   jest-mock: ^29.2.1
-  p-defer: ^4.0.0
+  p-defer: '=3.0.0'
   pino-pretty: ^9.1.1
   prettier: ^2.7.1
   prettier-plugin-packagejson: ^2.3.0
@@ -74,7 +74,7 @@ devDependencies:
   jest: 29.2.1_ed30736049f6ed481aabe12e36c79cd4
   jest-junit: 14.0.1
   jest-mock: 29.2.1
-  p-defer: 4.0.0
+  p-defer: 3.0.0
   pino-pretty: 9.1.1
   prettier: 2.7.1
   prettier-plugin-packagejson: 2.3.0_prettier@2.7.1
@@ -4625,9 +4625,9 @@ packages:
       word-wrap: 1.2.3
     dev: true
 
-  /p-defer/4.0.0:
-    resolution: {integrity: sha512-Vb3QRvQ0Y5XnF40ZUWW7JfLogicVh/EnA5gBIvKDJoYpeI82+1E3AlB9yOcKFS0AhHrWVnAQO39fbR0G99IVEQ==}
-    engines: {node: '>=12'}
+  /p-defer/3.0.0:
+    resolution: {integrity: sha512-ugZxsxmtTln604yeYd29EGrNhazN2lywetzpKhfmQjW/VJmhpDmWbiX+h0zL8V91R0UXkhb3KtPmyq9PZw3aYw==}
+    engines: {node: '>=8'}
     dev: true
 
   /p-each-series/2.2.0:

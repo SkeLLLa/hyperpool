@@ -1,7 +1,8 @@
-import type { Config } from '@jest/types';
-import { defaults as tsjPreset } from 'ts-jest/presets';
+import type { JestConfigWithTsJest } from 'ts-jest';
+import tsjPreset from 'ts-jest/presets';
 
-const config: Config.InitialOptions = {
+const config: JestConfigWithTsJest = {
+  ...tsjPreset.defaults,
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.(ts|js)'],
   coverageReporters: ['lcov', 'text', 'json', 'html'],
@@ -16,8 +17,5 @@ const config: Config.InitialOptions = {
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   modulePathIgnorePatterns: ['<rootDir>/dist/'], // ignore mocks in dist folder
   testMatch: ['**/*.unit.spec.ts'],
-  transform: {
-    ...tsjPreset.transform,
-  },
 };
 export default config;
