@@ -1,6 +1,7 @@
 import { EHyperpoolErrorCodes, HyperpoolError } from '../errors';
 import type { IPoolItemWithStats } from '../types';
 
+import type { IStats } from './AbstractPool';
 import { BalancedRoundRobin } from './BalancedRoundRobin';
 
 export interface IConfig {
@@ -27,7 +28,6 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithStats>
       targetRunTime: options.targetRunTime ?? Number.POSITIVE_INFINITY,
     };
     this.currentMaxCurrency = this.config.concurrencyMax;
-    this.stats.free = this.currentMaxCurrency;
     this.minLoad = {
       curr: Number.POSITIVE_INFINITY,
       prev: Number.POSITIVE_INFINITY,
@@ -39,12 +39,18 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithStats>
     return this.stats.running / this.stats.free;
   }
 
+  override get stats(): IStats {
+    return {
+      ...this.poolStats,
+      free: this.currentMaxCurrency - this.poolStats.running,
+    };
+  }
+
   public reward(): void {
     this.currentMaxCurrency += this.config.concurrencyReward;
     if (this.currentMaxCurrency > this.config.concurrencyMax) {
       this.currentMaxCurrency = this.config.concurrencyMax;
     }
-    this.stats.free = this.currentMaxCurrency;
   }
 
   public penalize(): void {
@@ -52,7 +58,6 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithStats>
     if (this.currentMaxCurrency < this.config.concurrencyMin) {
       this.currentMaxCurrency = this.config.concurrencyMin;
     }
-    this.stats.free = this.currentMaxCurrency;
   }
 
   public override async execAsync<F extends (instance: TValue) => unknown>(continuation: F): Promise<ReturnType<F>> {
