@@ -43,10 +43,10 @@ describe('Dynamic Balanced Concurrency', () => {
     });
     expect(pm.stats).toMatchInlineSnapshot(`
       {
-        "free": 2,
+        "free": 0,
         "queued": 0,
         "running": 2,
-        "size": 3,
+        "size": 0,
       }
     `);
 
