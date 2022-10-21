@@ -1,3 +1,11 @@
+## [1.3.2](https://github.com/SkeLLLa/hyperpool/compare/v1.3.1...v1.3.2) (2022-10-21)
+
+
+### 🛠 Fixes
+
+* pools running fix ([e7e1be6](https://github.com/SkeLLLa/hyperpool/commit/e7e1be661d74afa9e1fda2b27f58ab71571e0ed7))
+* **test:** update snapshots ([e081425](https://github.com/SkeLLLa/hyperpool/commit/e08142548100cf18aab7eecff9b8b49976fe8a9d))
+
 ## [1.3.1](https://github.com/SkeLLLa/hyperpool/compare/v1.3.0...v1.3.1) (2022-10-19)
 
 
