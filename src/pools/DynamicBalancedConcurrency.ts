@@ -36,7 +36,7 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithStats>
   }
 
   override get load() {
-    return this.stats.running / this.stats.free;
+    return this.stats.running / this.stats.free + this.stats.running;
   }
 
   override get stats(): IStats {
