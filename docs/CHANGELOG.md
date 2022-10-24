@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/SkeLLLa/hyperpool/compare/v1.3.2...v1.3.3) (2022-10-24)
+
+
+### 🛠 Fixes
+
+* **polls:** load calc fix ([9cb861a](https://github.com/SkeLLLa/hyperpool/commit/9cb861a749b593ea267c619f9770216e486f0b7d))
+
 ## [1.3.2](https://github.com/SkeLLLa/hyperpool/compare/v1.3.1...v1.3.2) (2022-10-21)
 
 
