@@ -46,7 +46,7 @@ describe('Dynamic Balanced Concurrency', () => {
         "free": 0,
         "queued": 0,
         "running": 2,
-        "size": 0,
+        "size": 2,
       }
     `);
 

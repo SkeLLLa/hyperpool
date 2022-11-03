@@ -42,6 +42,7 @@ export class DynamicBalancedConcurrency<TKey, TValue extends IPoolItemWithStats>
   override get stats(): IStats {
     return {
       ...this.poolStats,
+      size: this.currentMaxCurrency,
       free: this.currentMaxCurrency - this.poolStats.running,
     };
   }
