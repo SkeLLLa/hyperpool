@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/SkeLLLa/hyperpool/compare/v1.3.3...v1.3.4) (2022-11-03)
+
+
+### 🛠 Fixes
+
+* concurrecny stats ([7de2098](https://github.com/SkeLLLa/hyperpool/commit/7de2098596582c809df86e9d33d099b3ddd51744))
+
 ## [1.3.3](https://github.com/SkeLLLa/hyperpool/compare/v1.3.2...v1.3.3) (2022-10-24)
 
 
