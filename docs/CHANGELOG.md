@@ -1,3 +1,15 @@
+## [1.4.0](https://github.com/SkeLLLa/hyperpool/compare/v1.3.4...v1.4.0) (2023-01-13)
+
+
+### 🚀 Features
+
+* **pools:** add hash random pool ([82d933b](https://github.com/SkeLLLa/hyperpool/commit/82d933b8be39e947918425a9de9b65735b44de5f))
+
+
+### 🧾 Other
+
+* **deps:** update ([372b170](https://github.com/SkeLLLa/hyperpool/commit/372b170a808d62ed111f1dbf4573aabdfd82dace))
+
 ## [1.3.4](https://github.com/SkeLLLa/hyperpool/compare/v1.3.3...v1.3.4) (2022-11-03)
 
 
