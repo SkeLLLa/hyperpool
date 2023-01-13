@@ -41,9 +41,9 @@ export abstract class AbstractPool<TKey, TValue extends IPoolItem> {
     return this.stats.running / this.stats.size;
   }
 
-  public abstract getNextItem(): TValue;
+  public abstract getNextItem(...args: unknown[]): TValue;
 
-  public abstract [Symbol.iterator](): Generator<TValue>;
+  public abstract [Symbol.iterator](...args: unknown[]): Generator<TValue>;
 
   public getItemByKey(key: TKey): TValue | undefined {
     return this.agents.get(key);
@@ -76,11 +76,14 @@ export abstract class AbstractPool<TKey, TValue extends IPoolItem> {
     );
   }
 
-  public async execAsync<F extends TContinuationFn<TValue>>(continuation: F): Promise<ReturnType<F>> {
+  public async execAsync<F extends TContinuationFn<TValue>>(
+    continuation: F,
+    ...args: unknown[]
+  ): Promise<ReturnType<F>> {
     this.poolStats.running++;
     this.poolStats.free--;
     try {
-      const instance = this.getNextItem();
+      const instance = this.getNextItem(...args);
       const result = await continuation(instance);
       return result as ReturnType<F>;
     } finally {
