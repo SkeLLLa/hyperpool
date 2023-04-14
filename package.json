@@ -1,6 +1,6 @@
 {
   "name": "hyperpool",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Library for building hierarchical pools with different loadbalancing and ratelimiting strategies",
   "homepage": "https://github.com/SkeLLLa/hyperpool#readme",
   "bugs": {

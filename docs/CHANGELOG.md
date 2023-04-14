@@ -1,3 +1,10 @@
+## [1.5.0](https://github.com/SkeLLLa/hyperpool/compare/v1.4.0...v1.5.0) (2023-04-14)
+
+
+### 🚀 Features
+
+* update pnpm and release workflow ([6b7774c](https://github.com/SkeLLLa/hyperpool/commit/6b7774ccce019aff0dd71d0c4f48e3b005c7baa4))
+
 ## [1.4.0](https://github.com/SkeLLLa/hyperpool/compare/v1.3.4...v1.4.0) (2023-01-13)
 
 
